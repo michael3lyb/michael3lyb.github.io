@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前期准备 准备去steam购买并安装GTA V 安装anaconda，我安装的版本是 conda 4.3.30 (python 3.6.1) 安装openCV，conda install -c conda-forge opencv。这里除了openCV其他的组件anaconda有默认安装 打开GTA V设置窗口大小为8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python自动驾驶GTA5】1-获取图像">
+<meta property="og:url" content="http://michael3lyb.github.io/2017/11/17/【Python自动驾驶GTA5】1-获取图像/index.html">
+<meta property="og:site_name" content="Yibai&#39;s Blog">
+<meta property="og:description" content="前期准备 准备去steam购买并安装GTA V 安装anaconda，我安装的版本是 conda 4.3.30 (python 3.6.1) 安装openCV，conda install -c conda-forge opencv。这里除了openCV其他的组件anaconda有默认安装 打开GTA V设置窗口大小为800*600，放置在左上角   获取游戏画面 - part-1-Getting-">
+<meta property="og:image" content="http://michael3lyb.github.io/2017/11/17/【Python自动驾驶GTA5】1-获取图像/1.png">
+<meta property="og:updated_time" content="2017-11-21T21:40:25.708Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Python自动驾驶GTA5】1-获取图像">
+<meta name="twitter:description" content="前期准备 准备去steam购买并安装GTA V 安装anaconda，我安装的版本是 conda 4.3.30 (python 3.6.1) 安装openCV，conda install -c conda-forge opencv。这里除了openCV其他的组件anaconda有默认安装 打开GTA V设置窗口大小为800*600，放置在左上角   获取游戏画面 - part-1-Getting-">
+<meta name="twitter:image" content="http://michael3lyb.github.io/2017/11/17/【Python自动驾驶GTA5】1-获取图像/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://michael3lyb.github.io/2017/11/17/【Python自动驾驶GTA5】1-获取图像/"/>
+
+
+
+
+
+  <title>【Python自动驾驶GTA5】1-获取图像 | Yibai's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yibai's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/17/【Python自动驾驶GTA5】1-获取图像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【Python自动驾驶GTA5】1-获取图像</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-17T00:03:51-05:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><ol>
+<li>准备去steam购买并安装GTA V</li>
+<li>安装anaconda，我安装的版本是 conda 4.3.30 (python 3.6.1)</li>
+<li>安装openCV，<code>conda install -c conda-forge opencv</code>。这里除了openCV其他的组件anaconda有默认安装</li>
+<li>打开GTA V设置窗口大小为800*600，放置在左上角</li>
+</ol>
+<img src="/2017/11/17/【Python自动驾驶GTA5】1-获取图像/1.png">
+<h2 id="获取游戏画面-part-1-Getting-Visuals-py"><a href="#获取游戏画面-part-1-Getting-Visuals-py" class="headerlink" title="获取游戏画面 - part-1-Getting-Visuals.py"></a>获取游戏画面 - part-1-Getting-Visuals.py</h2><p>使用的组件简介：</p>
+<ul>
+<li>PIL：图像库，ImageGrab工具用来抓取画面</li>
+<li>cv2：大名鼎鼎的openCV，最知名的一个computer vision库</li>
+<li>numpy：著名的科学计算库</li>
+<li>time：python自带的时间工具</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageGrab</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">screen_record</span><span class="params">()</span>:</span> </span><br><span class="line">    last_time = time.time()</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">True</span>):</span><br><span class="line">        <span class="comment"># 800x600 windowed mode for GTA 5, at the top left position of your main screen.</span></span><br><span class="line">        <span class="comment"># 40 px accounts for title bar. </span></span><br><span class="line">        printscreen =  np.array(ImageGrab.grab(bbox=(<span class="number">0</span>,<span class="number">40</span>,<span class="number">800</span>,<span class="number">640</span>)))</span><br><span class="line">        print(<span class="string">'loop took &#123;&#125; seconds'</span>.format(time.time()-last_time))</span><br><span class="line">        last_time = time.time()</span><br><span class="line">        cv2.imshow(<span class="string">'window'</span>,cv2.cvtColor(printscreen, cv2.COLOR_BGR2RGB))</span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">25</span>) &amp; <span class="number">0xFF</span> == ord(<span class="string">'q'</span>):</span><br><span class="line">            cv2.destroyAllWindows()</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">screen_record()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>screen_record这个函数就是用来获取游戏实时画面。在while循环直到手动推出</li>
+<li>cv2.imshow会打开一个新的程序窗口来显示内容</li>
+</ol>
+<p>按照sentdex这个程序的方法我发现画面只有大概12帧，大大低于我的预期。于是自己搜索了一番，找到了更好的库，<a href="http://python-mss.readthedocs.io/en/dev/examples.html#opencv-numpy" target="_blank" rel="noopener">mss</a>。同样是结合OpenCV和Numpy，帧数现在可以提升到40帧以上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> mss</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">screen_record</span><span class="params">()</span>:</span> </span><br><span class="line">    <span class="keyword">with</span> mss.mss() <span class="keyword">as</span> sct:</span><br><span class="line">        <span class="comment"># Part of the screen to capture</span></span><br><span class="line">        monitor = &#123;<span class="string">'top'</span>: <span class="number">40</span>, <span class="string">'left'</span>: <span class="number">0</span>, <span class="string">'width'</span>: <span class="number">800</span>, <span class="string">'height'</span>: <span class="number">640</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="string">'Screen capturing'</span>:</span><br><span class="line">            last_time = time.time()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Get raw pixels from the screen, save it to a Numpy array</span></span><br><span class="line">            img = numpy.array(sct.grab(monitor))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Display the picture</span></span><br><span class="line">            cv2.imshow(<span class="string">'OpenCV/Numpy normal'</span>, img)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Display the picture in grayscale</span></span><br><span class="line">            <span class="comment"># cv2.imshow('OpenCV/Numpy grayscale',</span></span><br><span class="line">            <span class="comment">#            cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY))</span></span><br><span class="line"></span><br><span class="line">            print(<span class="string">'fps: &#123;0&#125;'</span>.format(<span class="number">1</span> / (time.time()-last_time)))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Press "q" to quit</span></span><br><span class="line">            <span class="keyword">if</span> cv2.waitKey(<span class="number">25</span>) &amp; <span class="number">0xFF</span> == ord(<span class="string">'q'</span>):</span><br><span class="line">                cv2.destroyAllWindows()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">screen_record()</span><br></pre></td></tr></table></figure>
+<p>这个库可以这么快的原因应该是用了<a href="https://docs.python.org/3/library/ctypes.html" target="_blank" rel="noopener">ctypes</a>。 </p>
+<p><strong>Reference</strong></p>
+<p>教程的内容大部分来自sentdex的<a href="https://www.youtube.com/watch?v=ks4MPfMq8aQ&amp;list=PLQVvvaa0QuDeETZEOy4VdocT7TOjfSA8a" target="_blank" rel="noopener">Python plays Grand Theft Auto V</a>系列</p>
+<p><a href="https://zhuanlan.zhihu.com/python-dev/20152309" target="_blank" rel="noopener">聊聊Python ctypes 模块</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/16/泛灵论-人与动物的关系/" rel="next" title="泛灵论-人与动物的关系">
+                <i class="fa fa-chevron-left"></i> 泛灵论-人与动物的关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/17/未来简史2/" rel="prev" title="未来简史2">
+                未来简史2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yibai Li</p>
+              <p class="site-description motion-element" itemprop="description">my blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取游戏画面-part-1-Getting-Visuals-py"><span class="nav-number">2.</span> <span class="nav-text">获取游戏画面 - part-1-Getting-Visuals.py</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yibai Li</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

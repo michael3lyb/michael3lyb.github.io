@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/29/windows-10上安装spark-2-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yibai Li">
@@ -250,7 +250,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/29/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2017/11/29/windows-10上安装spark-2-2/" itemprop="url">windows 10上安装spark 2.2</a></h1>
         
 
         <div class="post-meta">
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-29T17:53:15-05:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-29T16:08:35-05:00">
                 2017-11-29
               </time>
             
@@ -302,15 +302,1223 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>spark不仅可以运行在安装了Hadoop的集群上，同样可以安装在我们的笔记本电脑上。那要怎样安装到最新的Windows 10上呢？</p>
+<p>目前最新版的spark是2.2版本，使用的Scala 2.11编译。</p>
+<ol>
+<li>安装java8 JDK，设置好环境变量，确保<code>java -version</code>和<code>Javac -version</code>都好用</li>
+<li>安装<a href="http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.msi" target="_blank" rel="noopener">Scala 2.11</a>的版本，设置好环境变量，不要安装官网最新版的2.12。确保<code>scala -version</code>和<code>scalac -version</code>都好用</li>
+<li>现在下载<a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">最新版spark</a>，我现在的版本是spark-2.2.0-bin-hadoop2.7.tgz。</li>
+<li>解压到C盘中</li>
+<li>设置SPARK_HOME环境变量，C:\spark-2.2.0-bin-hadoop2.7</li>
+<li>添加<code>%SPARK_HOME%\bin</code>到Path</li>
+<li>下载<a href="https://github.com/steveloughran/winutils" target="_blank" rel="noopener">winutils</a>的Hadoop 2.7版本</li>
+<li>把hadoop-2.7.1文件夹复制到C盘</li>
+<li>设置HADOOP_HOME环境变量，C:\hadoop-2.7.1</li>
+<li>添加<code>%HADOOP_HOME%\bin</code>到Path</li>
+<li>打开控制台，输入<code>spark-shell</code>检查安装是否成功。</li>
+</ol>
+<img src="/2017/11/29/windows-10上安装spark-2-2/spark-shell.PNG" title="spark-shell on windows">
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/21/Windows10上安装openai的universe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/21/Windows10上安装openai的universe/" itemprop="url">Windows10上安装OpenAI的universe</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T16:06:14-05:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近人工智能在各种游戏战胜人类。前有Deep Mind的Alphago战胜所有顶尖围棋选手。后有OpenAI的人工智能在1v1的data2游戏中完胜顶尖人类玩家。OpenAI开源了他的这一部分工作-<a href="https://github.com/openai/universe#installation" target="_blank" rel="noopener">universe</a>，希望更多的人学习人工智能，用这个系统训练玩各种不同的游戏。</p>
+<p>但可惜的是目前universe官方还没有支持Windows，只支持Linux和Mac。但我们知道微软在Windows10的年度升级版里面增加了一个Linux子系统，我们是不是可以利用这个子系统来安装呢？</p>
+<h2 id="安装Linux子系统"><a href="#安装Linux子系统" class="headerlink" title="安装Linux子系统"></a>安装Linux子系统</h2><p>我目前的系统版本为Windows 10 Home 1079 16299.64。安装子系统已经不许要切换到开发者权限。只需要直接到Microsoft store中安装Ubuntu，参考官方文档安装，<a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_blank" rel="noopener">Windows 10 Installation Guide</a>。</p>
+<ol>
+<li>启动powershell，开启功能，<code>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</code></li>
+<li>安装<a href="https://www.microsoft.com/store/p/ubuntu/9nblggh4msv6" target="_blank" rel="noopener">Ubuntu</a>，注意只能安装在C盘</li>
+<li>打开Ubuntu的终端，完成。</li>
+</ol>
+<p>之后我又参考这篇文章，<a href="https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/" target="_blank" rel="noopener">How to Run Graphical Linux Desktop Applications from Windows 10’s Bash Shell</a>。使得Linux可以运行图形化界面的程序。</p>
+<p>下面是简化步骤。</p>
+<ol>
+<li>安装X Server，<a href="https://sourceforge.net/projects/xming/" target="_blank" rel="noopener">Xming</a> </li>
+<li>安装一个窗口程序，<code>sudo apt-get install vim-gtk</code></li>
+<li>设置显示环境变量，<code>export DISPLAY=:0</code>。每次运行之前都需要执行。</li>
+</ol>
+<h2 id="配置python"><a href="#配置python" class="headerlink" title="配置python"></a>配置python</h2><p>Linux子系统是Ubuntu 16.04。安装universe之前我们先配置好python。系统默认安装了python2.7，虽然universe支持2.7，我还是安装了anaconda，升级到了3.6。</p>
+<ol>
+<li>卸载python2.7，<code>sudo apt purge python2.7-minimal</code></li>
+<li>安装anaconda，官网下载64位版本，执行Anaconda3-5.0.1-Linux-x86_64.sh，按照提示安装</li>
+<li>安装程序最后会在~/.bashrc中添加<code>export PATH=&quot;/home/michael/anaconda3/bin:$PATH&quot;</code></li>
+<li>更改pip的硬链接<code>ln /home/username/anaconda3/bin/pip /home/username/.local/bin/pip</code></li>
+</ol>
+<h2 id="安装universe"><a href="#安装universe" class="headerlink" title="安装universe"></a>安装universe</h2><p>Ubuntu 16.04使用以下命令安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install golang libjpeg-turbo8-dev make</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/openai/universe.git</span><br><span class="line"><span class="built_in">cd</span> universe</span><br><span class="line">pip install -e .</span><br></pre></td></tr></table></figure>
+<p>大功告成</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/20/用OpenAI的universe玩游戏/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/20/用OpenAI的universe玩游戏/" itemprop="url">用OpenAI的universe玩游戏</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-20T22:17:18-05:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/19/【Python自动驾驶GTA5】2-边缘检测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/19/【Python自动驾驶GTA5】2-边缘检测/" itemprop="url">【Python自动驾驶GTA5】2-边缘检测</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T22:53:13-05:00">
+                2017-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>紧接上一步，现在我们对获得的图像进行一些处理，RGB转换为灰度图像并做边缘检测。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageGrab</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> mss</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_img</span><span class="params">(image)</span>:</span></span><br><span class="line">    original_image = image</span><br><span class="line">    <span class="comment"># convert to gray</span></span><br><span class="line">    processed_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line">    <span class="comment"># edge detection</span></span><br><span class="line">    processed_img =  cv2.Canny(processed_img, threshold1 = <span class="number">200</span>, threshold2=<span class="number">300</span>)</span><br><span class="line">    <span class="keyword">return</span> processed_img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">screen_record</span><span class="params">()</span>:</span> </span><br><span class="line">    <span class="keyword">with</span> mss.mss() <span class="keyword">as</span> sct:</span><br><span class="line">        <span class="comment"># Part of the screen to capture</span></span><br><span class="line">        monitor = &#123;<span class="string">'top'</span>: <span class="number">40</span>, <span class="string">'left'</span>: <span class="number">0</span>, <span class="string">'width'</span>: <span class="number">800</span>, <span class="string">'height'</span>: <span class="number">640</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="string">'Screen capturing'</span>:</span><br><span class="line">            last_time = time.time()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Get raw pixels from the screen, save it to a Numpy array</span></span><br><span class="line">            img = np.array(sct.grab(monitor))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Display the picture in grayscale and detect edge</span></span><br><span class="line">            cv2.imshow(<span class="string">'OpenCV/Numpy grayscale'</span>, process_img(img))</span><br><span class="line"></span><br><span class="line">            print(<span class="string">'fps: &#123;0&#125;'</span>.format(<span class="number">1</span> / (time.time()-last_time)))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Press "q" to quit</span></span><br><span class="line">            <span class="keyword">if</span> cv2.waitKey(<span class="number">25</span>) &amp; <span class="number">0xFF</span> == ord(<span class="string">'q'</span>):</span><br><span class="line">                cv2.destroyAllWindows()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">screen_record()process_img</span><br></pre></td></tr></table></figure>
+<p>增加了一个process_img函数，保留原始图像再做转换。<a href="https://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html" target="_blank" rel="noopener">Canny Edge Detector</a>是常用的边缘检测器。</p>
+<h2 id="控制游戏"><a href="#控制游戏" class="headerlink" title="控制游戏"></a>控制游戏</h2><p>这里用到了pyautogui来控制鼠标和键盘。先安装<code>pip install pyautogui</code>.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/19/刘慈欣作品集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/19/刘慈欣作品集/" itemprop="url">刘慈欣作品集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T15:22:50-05:00">
+                2017-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li style="list-style: none"><input type="checkbox"> 镜子 (本篇第十六届银河奖)</li>
+<li style="list-style: none"><input type="checkbox"> 山（网友票选人气最高中篇作品）</li>
+<li style="list-style: none"><input type="checkbox"> 诗云（本篇获第十五届银河奖读者提名奖）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=FGP1wQ1KaRE&amp;t=326s" target="_blank" rel="noopener">流浪地球</a>（本篇第十二届银河奖 已投拍电影 刘慈欣本人改编剧本）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=ysHxcHVkpJY" target="_blank" rel="noopener">中国太阳</a>（本篇获第十四届银河奖）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=fJTjoRLxzV8" target="_blank" rel="noopener">带上她的眼睛</a>（本篇获第十一届银河奖）</li>
+<li style="list-style: none"><input type="checkbox"> 地球大炮（本篇获第十五届年银河奖）</li>
+<li style="list-style: none"><input type="checkbox"> 思想者（大刘少有的暖心文字）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=GArCvvic9CU" target="_blank" rel="noopener">朝闻道</a>（本篇一于《科幻世界》发表，便引来读者巨大反响）</li>
+<li style="list-style: none"><input type="checkbox"> 乡村教师（刘慈欣唯一自评特别的作品，已投拍电影，并入选中学编写教材）</li>
+</ul>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 混沌蝴蝶 (个人命运的诗化悲剧)</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=kJLC-1E1H0Y" target="_blank" rel="noopener">吞食者</a>（第十四届银河奖读者提名奖，本篇被誉为《三体》前传）</li>
+<li style="list-style: none"><input type="checkbox"> 全频带阻塞干扰（（俄罗斯特别版）获第十三届银河奖）</li>
+<li style="list-style: none"><input type="checkbox"> 地火（奇妙科幻与沉重现实相结合的神来之笔）</li>
+<li style="list-style: none"><input type="checkbox"> 梦之海（本篇获第十五届银河奖，超技术的极致描写）</li>
+<li style="list-style: none"><input type="checkbox"> 赡养上帝（“疯狂的外星人”《赡养人类》姊妹篇本篇获第一届柔石小说奖）</li>
+<li style="list-style: none"><input type="checkbox"> 赡养人类（“疯狂的外星人” 《赡养上帝》姊妹篇本篇获第十七届银河奖）</li>
+<li style="list-style: none"><input type="checkbox"> 微纪元（告别宏人时代，已确定又大刘本人担纲改编电影）</li>
+<li style="list-style: none"><input type="checkbox"> 天使时代（原名《波斯湾飞马》探讨基因技术可能带来的生存危机）</li>
+<li style="list-style: none"><input type="checkbox" checked> 超新星纪元（独家奉献短篇版，获赵树理文学奖，已确定将搬上大银幕）</li>
+</ul>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 信使 (时空跃迁的暖心之作——“人类是有未来的”)</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=keIdlr7C6gU&amp;t=74s" target="_blank" rel="noopener">坍缩</a>（“所有的生活都是合理的”）    </li>
+<li style="list-style: none"><input type="checkbox"> 纤维（“宇宙一分为二，我看到的是另一种可能的纤维世界。”）</li>
+<li style="list-style: none"><input type="checkbox"> 西洋（“这又是新大陆多梦的一夜。”）</li>
+<li style="list-style: none"><input type="checkbox"> 微观尽头（“没有任何预兆，比眨眼的速度更快，宇宙再次被反转……”）</li>
+<li style="list-style: none"><input type="checkbox"> 2018年（“不管好坏，我们将是第一批真正触摸永恒的人。”）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=RTXYqcInMu8" target="_blank" rel="noopener">命运</a>（“我们就是这样误入了一个时间蛀洞。”）</li>
+<li style="list-style: none"><input type="checkbox"> 光荣与梦想（“轰然一声，光荣与梦想熊熊燃烧起来。”）</li>
+<li style="list-style: none"><input type="checkbox"> 鲸歌（“这是大海的灵魂在歌唱。”）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=pK9gqgA5duA" target="_blank" rel="noopener">太原诅咒</a>（“晨曦初露时，操作开始……”）</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=8UiKuNsyn4U" target="_blank" rel="noopener">圆圆的肥皂泡</a>（“天空成了梦的天空”）</li>
+<li style="list-style: none"><input type="checkbox"> 白垩纪往事（独家奉献短篇版，“没有人知道，在这宁静的一刻，地球的历史已被扭向另外一个方向……”）</li>
+</ul>
+<p>其他</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://www.youtube.com/watch?v=9Zta5i_pPQc" target="_blank" rel="noopener">人生</a>：记忆遗传</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/19/开始健身后身体的一些变化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/19/开始健身后身体的一些变化/" itemprop="url">开始健身后身体的一些变化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T15:03:26-05:00">
+                2017-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>开始健身已经有将近1个月的时间了，肌肉线条确实能看到有明显变化，特别是胸肌和手臂的变化还是比较明显的。但上周的一天夜间突然降温，早上起来就感觉嗓子不舒服。之后几天嗓子开始疼，慢慢出现感冒症状。</p>
+<h4 id="为什么每次感冒都是先嗓子疼然后才会流鼻涕打喷嚏呢？"><a href="#为什么每次感冒都是先嗓子疼然后才会流鼻涕打喷嚏呢？" class="headerlink" title="为什么每次感冒都是先嗓子疼然后才会流鼻涕打喷嚏呢？"></a>为什么每次感冒都是先嗓子疼然后才会流鼻涕打喷嚏呢？</h4><p>感冒前的嗓子痛是因为扁桃体（因为长得像扁扁的桃子😂）发炎所致。扁桃体是人体免疫系统的第一道防线，多个扁桃体环绕在咽部四周。感冒前的嗓子疼就是他们在消灭病毒和细菌的过程中引起的炎症反应。</p>
+<h4 id="经常运动的人为什么感觉免疫力并没有提高？"><a href="#经常运动的人为什么感觉免疫力并没有提高？" class="headerlink" title="经常运动的人为什么感觉免疫力并没有提高？"></a>经常运动的人为什么感觉免疫力并没有提高？</h4><p>健身和运动对于免疫力的增强一定有帮助，但增加训练量可能在初期还会降低免疫力。这和肌肉的超量恢复相似，刚训练完肌肉纤维被部分破环，力量一定是下降的。长期规律的中小强度的运动，对人的免疫机能肯定是有积极作用，但首先还是要保护好自己，免疫系统再强也是可能感冒的。</p>
+<h4 id="感冒了应不应该吃抗生素？"><a href="#感冒了应不应该吃抗生素？" class="headerlink" title="感冒了应不应该吃抗生素？"></a>感冒了应不应该吃抗生素？</h4><p>抗生素只对细菌具有杀伤作用，对病毒是无效的。所以如果是病毒性感冒，抗生素是无效的。为什么很多人说能不用抗生素就尽量不用？因为细菌都是有抗药性的，总会有少部分细菌存活下来。抗生素相当于对细菌做了一次人为的自然选择，那些存活下来的细菌在下次你感冒的时候就不怕抗生素了，就只能用另外一种或者更高级的抗生素。如果吃了抗生素，就要一次吃完一个疗程，一般至少3天。</p>
+<p>因此：</p>
+<ol>
+<li>尽可能不使用抗生素，避免细菌产生抗药性。</li>
+<li>尽可能不更换抗生素，避免细菌产生超级抗药性。</li>
+<li>如果不得不用抗生素，宁可多吃，也决不能少吃。</li>
+</ol>
+<p><strong>Reference</strong></p>
+<p><a href="https://www.zhihu.com/question/51251090" target="_blank" rel="noopener">健身和提高免疫力到底有怎样的关系？</a></p>
+<p><a href="https://www.zhihu.com/question/19834799" target="_blank" rel="noopener">怎么样能提高免疫力？</a></p>
+<p><a href="https://www.zhihu.com/question/28747601" target="_blank" rel="noopener">健身训练与增强体质和抵抗力相关性大吗？</a></p>
+<p><a href="https://www.zhihu.com/question/28821476" target="_blank" rel="noopener">为什么感冒前总是先嗓子疼，两三天后才会有感冒的症状？每次都这样?</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/17/the-witness-禅境解谜/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/17/the-witness-禅境解谜/" itemprop="url">The witness - 禅境解谜</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-17T19:54:20-05:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/2017/11/17/the-witness-禅境解谜/witness.jpg" title="全岛景色">
+<p>花了超过3天时间才终于把这部IGN评分10分满分的作品完全通关。已经很久没有这么奇妙的游戏体验了。游戏出了划线解密还在环境中充满各种脑洞大开的场景谜题，玩完真的是让人在有点走火入魔，到处寻找画点成线的可能。</p>
+<p>整个游戏一共有3个结局。打通所有谜题后的正统结局是在一个笼子中飞越全岛，所有曾经的已经完成的谜题都回归原位，我们也最终返回初始的地方。我想是表达一种，“所有的成就都将随风而去，但生命又会从头开始”的意境。生命本就没有意义，60多亿年前地球形成，40多亿年前生命出现，一代又一代，生生不息，每一代的延续都是为了后代的延续。消失了的，又有多少能被记起。</p>
+<p>第二个结局是在起始的花园中，开启一个以太阳为起点的环境谜题，进入一个时空混乱的空间。巨大的房间中散落着一些录音，记录了游戏制作人员的名单。在最后的时空走廊尽头，我们的视角回到了一个躺在沙发上的男人身上。他缓缓从沙发上起来，拔掉身上的管子，晃晃悠悠的站起来，已经不太会走路。开起来是在游戏世界中呆了太久。他走到哪都会指指画画，还没有从虚幻的世界中走出来哈哈。</p>
+<p>最后一个结局和第二个结局相似，在完成所有的环境谜题，找到所有录音以后，再从那个时空隧道出来，就会从另外一个地点醒来。应该都是这个游戏的开发工作室。最后男主跌跌撞撞的摔下楼梯，尿罐里的尿撒了一脸。。</p>
+<p>游戏的环境设计充满了各种色彩，花园也都设计的很美，让人感到一种宁静。</p>
+<p>游戏开发者Jonathan Blow此前开发过著名的iPhone游戏Braid，当年在iPhone上玩也感觉甚是惊叹。期待他的下一部作品。</p>
+<p>希望多一些这样的精品独立游戏，毕竟太多的3A大作空有壮观的大场面，缺少了一些引起玩家好奇的游戏性。游戏也不只是打打杀杀，而是真的可以成为第九艺术。</p>
+<p><strong>Reference</strong></p>
+<p><a href="http://www.gamesradar.com/eureka-moment-what-witness-story-really-about/" target="_blank" rel="noopener">That ‘Eureka’ moment: what The Witness is really about</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/17/未来简史2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/17/未来简史2/" itemprop="url">未来简史2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-17T11:51:48-05:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>The Anthropocene 人类世</p>
+<p>按照地质年代划分，现在是人类的纪元。其他的大型动物总量正在减少，人类和家畜欣欣向荣。人类世在地球历史中的独特性。人类打破了生物之间的地域隔离。古人消灭大型动物，因为它们的繁殖速率太低。</p>
+<p>The Serpent’s Children 蛇的孩子</p>
+<p>原始采集社会中的人类可能是泛灵论者，认为人只不过是一种动物。《圣经》中动物和人的唯一一次交谈：蛇诱惑夏娃偷吃知善恶树的果实。夏娃可能是来自蛇的隐喻。</p>
+<p>Ancestral Needs 祖先的需求</p>
+<p>《圣经》中阐述的人类是特别的理论开始于农业革命。畜牧业对于动物带来的精神伤害，深层次的原因是环境的变化速度过快，进化还不能跟上。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/17/【Python自动驾驶GTA5】1-获取图像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/17/【Python自动驾驶GTA5】1-获取图像/" itemprop="url">【Python自动驾驶GTA5】1-获取图像</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-17T00:03:51-05:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><ol>
+<li>准备去steam购买并安装GTA V</li>
+<li>安装anaconda，我安装的版本是 conda 4.3.30 (python 3.6.1)</li>
+<li>安装openCV，<code>conda install -c conda-forge opencv</code>。这里除了openCV其他的组件anaconda有默认安装</li>
+<li>打开GTA V设置窗口大小为800*600，放置在左上角</li>
+</ol>
+<img src="/2017/11/17/【Python自动驾驶GTA5】1-获取图像/1.png">
+<h2 id="获取游戏画面-part-1-Getting-Visuals-py"><a href="#获取游戏画面-part-1-Getting-Visuals-py" class="headerlink" title="获取游戏画面 - part-1-Getting-Visuals.py"></a>获取游戏画面 - part-1-Getting-Visuals.py</h2><p>使用的组件简介：</p>
+<ul>
+<li>PIL：图像库，ImageGrab工具用来抓取画面</li>
+<li>cv2：大名鼎鼎的openCV，最知名的一个computer vision库</li>
+<li>numpy：著名的科学计算库</li>
+<li>time：python自带的时间工具</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageGrab</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">screen_record</span><span class="params">()</span>:</span> </span><br><span class="line">    last_time = time.time()</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">True</span>):</span><br><span class="line">        <span class="comment"># 800x600 windowed mode for GTA 5, at the top left position of your main screen.</span></span><br><span class="line">        <span class="comment"># 40 px accounts for title bar. </span></span><br><span class="line">        printscreen =  np.array(ImageGrab.grab(bbox=(<span class="number">0</span>,<span class="number">40</span>,<span class="number">800</span>,<span class="number">640</span>)))</span><br><span class="line">        print(<span class="string">'loop took &#123;&#125; seconds'</span>.format(time.time()-last_time))</span><br><span class="line">        last_time = time.time()</span><br><span class="line">        cv2.imshow(<span class="string">'window'</span>,cv2.cvtColor(printscreen, cv2.COLOR_BGR2RGB))</span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">25</span>) &amp; <span class="number">0xFF</span> == ord(<span class="string">'q'</span>):</span><br><span class="line">            cv2.destroyAllWindows()</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">screen_record()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>screen_record这个函数就是用来获取游戏实时画面。在while循环直到手动推出</li>
+<li>cv2.imshow会打开一个新的程序窗口来显示内容</li>
+</ol>
+<p>按照sentdex这个程序的方法我发现画面只有大概12帧，大大低于我的预期。于是自己搜索了一番，找到了更好的库，<a href="http://python-mss.readthedocs.io/en/dev/examples.html#opencv-numpy" target="_blank" rel="noopener">mss</a>。同样是结合OpenCV和Numpy，帧数现在可以提升到40帧以上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> mss</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">screen_record</span><span class="params">()</span>:</span> </span><br><span class="line">    <span class="keyword">with</span> mss.mss() <span class="keyword">as</span> sct:</span><br><span class="line">        <span class="comment"># Part of the screen to capture</span></span><br><span class="line">        monitor = &#123;<span class="string">'top'</span>: <span class="number">40</span>, <span class="string">'left'</span>: <span class="number">0</span>, <span class="string">'width'</span>: <span class="number">800</span>, <span class="string">'height'</span>: <span class="number">640</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="string">'Screen capturing'</span>:</span><br><span class="line">            last_time = time.time()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Get raw pixels from the screen, save it to a Numpy array</span></span><br><span class="line">            img = numpy.array(sct.grab(monitor))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Display the picture</span></span><br><span class="line">            cv2.imshow(<span class="string">'OpenCV/Numpy normal'</span>, img)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Display the picture in grayscale</span></span><br><span class="line">            <span class="comment"># cv2.imshow('OpenCV/Numpy grayscale',</span></span><br><span class="line">            <span class="comment">#            cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY))</span></span><br><span class="line"></span><br><span class="line">            print(<span class="string">'fps: &#123;0&#125;'</span>.format(<span class="number">1</span> / (time.time()-last_time)))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Press "q" to quit</span></span><br><span class="line">            <span class="keyword">if</span> cv2.waitKey(<span class="number">25</span>) &amp; <span class="number">0xFF</span> == ord(<span class="string">'q'</span>):</span><br><span class="line">                cv2.destroyAllWindows()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">screen_record()</span><br></pre></td></tr></table></figure>
+<p>这个库可以这么快的原因应该是用了<a href="https://docs.python.org/3/library/ctypes.html" target="_blank" rel="noopener">ctypes</a>。 </p>
+<p><strong>Reference</strong></p>
+<p>教程的内容大部分来自sentdex的<a href="https://www.youtube.com/watch?v=ks4MPfMq8aQ&amp;list=PLQVvvaa0QuDeETZEOy4VdocT7TOjfSA8a" target="_blank" rel="noopener">Python plays Grand Theft Auto V</a>系列</p>
+<p><a href="https://zhuanlan.zhihu.com/python-dev/20152309" target="_blank" rel="noopener">聊聊Python ctypes 模块</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://michael3lyb.github.io/2017/11/16/泛灵论-人与动物的关系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yibai Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yibai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/16/泛灵论-人与动物的关系/" itemprop="url">泛灵论-人与动物的关系</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-16T22:36:57-05:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>古代中国人与动物的关系</p>
+<p>原始人类对于自然的态度</p>
+<p>农耕文明对于自然的态度，夏娃与蛇</p>
+<p>泛灵论</p>
 
           
         
@@ -349,6 +1557,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -392,7 +1604,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
